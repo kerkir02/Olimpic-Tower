@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,10 @@ public class GameManager : MonoBehaviour
         if (isGameOver)
         {
             gameOverText.gameObject.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(0);
+            }
         }
         else CountDown();
     }

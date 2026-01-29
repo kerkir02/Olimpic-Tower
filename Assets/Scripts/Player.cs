@@ -47,6 +47,11 @@ public class Player : MonoBehaviour
             rb.gravityScale = gravityScale;
             IsInMove = false;
         }
+
+        if(IsInMove && gameManagerScript.isGameOver)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     //GAME OVER on trigger
