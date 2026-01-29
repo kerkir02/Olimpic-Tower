@@ -7,16 +7,18 @@ public class Player : MonoBehaviour
     public float border = 30f;
     public float gravityScale = 5f;
 
+    private GameManager gameManagerScript;
+
     private Rigidbody2D rb;
 
     private bool IsInMove;
-    private bool IsGameOver;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         IsInMove = true;
+        gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -47,8 +49,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    //GAME OVER on trigger
+    private void OnTriggerEnter2D(Collider2D other)
     {
-
+        gameManagerScript.isGameOver = true;
+        //Debug.Log("GameOver");
+        gameObject.SetActive(false);
     }
 }
