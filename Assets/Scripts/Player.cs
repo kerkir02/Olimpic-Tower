@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
         if(IsInMove && gameManagerScript.isGameOver)
         {
             gameObject.SetActive(false);
+            gameManagerScript.score--;
         }
     }
 

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     public TMP_Text gameOverText;
     public TMP_Text scoreText;
+    public TMP_Text introText;
 
     private Vector3 spawnPosition = new Vector3(0.9f, 15.7f, 0f);
 
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
         score = -1;
         gameOverText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(true);
+        introText.gameObject.SetActive(true);
         SpawnPlayer();
         isTimer = false;
         isGameOver = false;
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isGameOver)
         {
+            introText.gameObject.SetActive(false);
             isTimer = true;
             time = 0;
         }
