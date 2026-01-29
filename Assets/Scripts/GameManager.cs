@@ -9,17 +9,21 @@ public class GameManager : MonoBehaviour
     public float delay = 5f;
     private bool isTimer;
     public bool isGameOver;
+    public int score;
 
     private Player playerScript;
 
     public TMP_Text gameOverText;
+    public TMP_Text scoreText;
 
     private Vector3 spawnPosition = new Vector3(0.9f, 15.7f, 0f);
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        score = -1;
         gameOverText.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(true);
         SpawnPlayer();
         isTimer = false;
         isGameOver = false;
@@ -32,6 +36,8 @@ public class GameManager : MonoBehaviour
         if (isGameOver)
         {
             gameOverText.gameObject.SetActive(true);
+            scoreText.gameObject.SetActive(false);
+            gameOverText.text = "Game Over\nYour score: " + score + "\nPress SPACE to restart";
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(0);
@@ -45,6 +51,7 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(player, spawnPosition, player.transform.rotation);
         playerScript = GameObject.Find("Player(Clone)").GetComponent<Player>();
+        WriteNewScore();
     }
 
     //spawn new player after time 
@@ -64,5 +71,12 @@ public class GameManager : MonoBehaviour
                 isTimer = false;
             }
         }
+    }
+
+    //new score
+    private void WriteNewScore()
+    {
+        score++;
+        scoreText.text = "Score: " + score;
     }
 }

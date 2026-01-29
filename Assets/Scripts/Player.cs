@@ -32,11 +32,11 @@ public class Player : MonoBehaviour
         }
 
         //block move out of screen
-        if (transform.position.x > border)
+        if (transform.position.x > border && IsInMove)
         {
             transform.position = new Vector3(border, transform.position.y, transform.position.z);
         }
-        if (transform.position.x < -border)
+        if (transform.position.x < -border && IsInMove)
         {
             transform.position = new Vector3(-border, transform.position.y, transform.position.z);
         }
