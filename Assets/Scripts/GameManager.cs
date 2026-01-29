@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
     public bool isGameOver;
     public int score;
 
-    private Player playerScript;
-
     public TMP_Text gameOverText;
     public TMP_Text scoreText;
     public TMP_Text introText;
@@ -52,7 +50,6 @@ public class GameManager : MonoBehaviour
     private void SpawnPlayer()
     {
         Instantiate(player, spawnPosition, player.transform.rotation);
-        playerScript = GameObject.Find("Player(Clone)").GetComponent<Player>();
         WriteNewScore();
     }
 
